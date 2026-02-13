@@ -4,806 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dra. Valentina Reyes — Psicóloga Clínica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --sand: #F5F0EB;
-            --warm-white: #FDFBF9;
-            --sage: #8B9E8B;
-            --sage-deep: #6B8068;
-            --clay: #C4A882;
-            --clay-dark: #A88B6A;
-            --charcoal: #2C2C2C;
-            --soft-charcoal: #4A4A4A;
-            --muted: #8A8480;
-            --blush: #E8D5C4;
-            --cream: #FAF7F2;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        html {
-            scroll-behavior: smooth;
-        }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Jost', sans-serif;
-            font-weight: 300;
-            color: var(--charcoal);
-            background: var(--warm-white);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* ── NAV ── */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.5s ease;
-            background: transparent;
-        }
-
-        nav.scrolled {
-            background: rgba(253, 251, 249, 0.92);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 1px 30px rgba(0,0,0,0.04);
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            color: var(--charcoal);
-        }
-
-        .logo span {
-            color: var(--sage-deep);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--soft-charcoal);
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--sage-deep);
-            transition: width 0.4s ease;
-        }
-
-        .nav-links a:hover { color: var(--sage-deep); }
-        .nav-links a:hover::after { width: 100%; }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 5px;
-        }
-
-        .hamburger span {
-            width: 26px;
-            height: 1.5px;
-            background: var(--charcoal);
-            transition: all 0.3s ease;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: translateY(6.5px) rotate(45deg);
-        }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) {
-            transform: translateY(-6.5px) rotate(-45deg);
-        }
-
-        /* ── HERO ── */
-        .hero {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            background: var(--cream);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(139,158,139,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(196,168,130,0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            padding: 8rem 5% 4rem 8%;
-            animation: fadeUp 1s ease 0.2s both;
-        }
-
-        .hero-tag {
-            font-size: 0.78rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--sage-deep);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
-
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.8rem, 5vw, 4.5rem);
-            font-weight: 300;
-            line-height: 1.15;
-            color: var(--charcoal);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--sage-deep);
-        }
-
-        .hero p {
-            font-size: 1.05rem;
-            color: var(--muted);
-            max-width: 440px;
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 1rem 2.8rem;
-            background: var(--sage-deep);
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Jost', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 400;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary:hover {
-            background: var(--sage);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(107,128,104,0.2);
-        }
-
-        .hero-buttons {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-outline {
-            display: inline-block;
-            padding: 1rem 2.8rem;
-            background: transparent;
-            color: var(--sage-deep);
-            text-decoration: none;
-            font-family: 'Jost', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 400;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            border: 1px solid var(--sage);
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-
-        .btn-outline:hover {
-            background: var(--sage-deep);
-            color: #fff;
-            border-color: var(--sage-deep);
-        }
-
-        .hero-visual {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            animation: fadeUp 1s ease 0.5s both;
-        }
-
-        .hero-image-wrapper {
-            width: 75%;
-            max-width: 450px;
-            aspect-ratio: 3/4;
-            background: linear-gradient(135deg, var(--blush), var(--sand));
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-image-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: 20px;
-            border: 1px solid rgba(255,255,255,0.5);
-            z-index: 1;
-        }
-
-        .hero-image-inner {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--clay-dark);
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .hero-image-inner svg {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1.5rem;
-            opacity: 0.4;
-        }
-
-        .hero-accent {
-            position: absolute;
-            top: -30px;
-            left: -30px;
-            width: 120px;
-            height: 120px;
-            border: 1px solid var(--sage);
-            opacity: 0.3;
-        }
-
-        /* ── SECTIONS COMMON ── */
-        section {
-            padding: 7rem 8%;
-        }
-
-        .section-tag {
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--sage-deep);
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 3.5vw, 3rem);
-            font-weight: 300;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            color: var(--muted);
-            max-width: 560px;
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 3.5rem;
-        }
-
-        .divider-line {
-            width: 50px;
-            height: 1px;
-            background: var(--sage);
-            margin-bottom: 2rem;
-        }
-
-        /* ── SERVICIOS ── */
-        #servicios {
-            background: var(--warm-white);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-
-        .service-card {
-            padding: 2.8rem 2.2rem;
-            background: var(--cream);
-            border: 1px solid rgba(196,168,130,0.15);
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--sage), var(--clay));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-
-        .service-card:hover::before { transform: scaleX(1); }
-
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.04);
-        }
-
-        .service-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 1.8rem;
-            color: var(--sage-deep);
-        }
-
-        .service-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.45rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--muted);
-            font-size: 0.92rem;
-            line-height: 1.75;
-        }
-
-        /* ── ABOUT (mini) ── */
-        .about-strip {
-            background: var(--charcoal);
-            color: #fff;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            text-align: center;
-            padding: 4rem 8%;
-            gap: 2rem;
-        }
-
-        .about-stat {
-            padding: 1.5rem;
-        }
-
-        .about-stat .number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--sage);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .about-stat .label {
-            font-size: 0.8rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* ── TESTIMONIOS ── */
-        #testimonios {
-            background: var(--cream);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-
-        .testimonial-card {
-            padding: 2.5rem;
-            background: var(--warm-white);
-            border: 1px solid rgba(196,168,130,0.1);
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem;
-            color: var(--sage);
-            opacity: 0.2;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            line-height: 1;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            color: var(--soft-charcoal);
-            font-size: 0.95rem;
-            line-height: 1.85;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--sage), var(--clay));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .author-info .name {
-            font-weight: 400;
-            font-size: 0.9rem;
-        }
-
-        .author-info .role {
-            font-size: 0.78rem;
-            color: var(--muted);
-        }
-
-        .stars {
-            color: var(--clay);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        /* ── CONTACTO ── */
-        #contacto {
-            background: var(--warm-white);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info p {
-            color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .contact-detail svg {
-            width: 20px;
-            height: 20px;
-            color: var(--sage-deep);
-            flex-shrink: 0;
-        }
-
-        .contact-detail span {
-            font-size: 0.95rem;
-            color: var(--soft-charcoal);
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            border: 1px solid rgba(196,168,130,0.25);
-            background: var(--cream);
-            font-family: 'Jost', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 300;
-            color: var(--charcoal);
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: var(--muted);
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: var(--sage);
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 140px;
-        }
-
-        /* ── UBICACIÓN ── */
-        #ubicacion {
-            background: var(--cream);
-            padding-bottom: 0;
-        }
-
-        .location-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin-bottom: 3rem;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            aspect-ratio: 16/10;
-            background: linear-gradient(135deg, var(--sand), var(--blush));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            border: 1px solid rgba(196,168,130,0.2);
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .map-placeholder svg {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 1rem;
-            opacity: 0.4;
-        }
-
-        .location-details h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 400;
-            margin-bottom: 1.2rem;
-        }
-
-        .location-details p {
-            color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-        }
-
-        .schedule-grid {
-            margin-top: 1.5rem;
-        }
-
-        .schedule-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(196,168,130,0.12);
-            font-size: 0.9rem;
-        }
-
-        .schedule-row .day { font-weight: 400; }
-        .schedule-row .time { color: var(--muted); }
-
-        /* ── FOOTER ── */
-        footer {
-            background: var(--charcoal);
-            color: rgba(255,255,255,0.4);
-            padding: 3rem 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.82rem;
-        }
-
-        footer .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        footer a {
-            color: rgba(255,255,255,0.4);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer a:hover { color: var(--sage); }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        /* ── ANIMATIONS ── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(25px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ── MOBILE NAV ── */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(253,251,249,0.97);
-            backdrop-filter: blur(30px);
-            z-index: 999;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2.5rem;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .mobile-menu.open {
-            display: flex;
-            opacity: 1;
-        }
-
-        .mobile-menu a {
-            text-decoration: none;
-            color: var(--charcoal);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 300;
-            transition: color 0.3s;
-        }
-
-        .mobile-menu a:hover { color: var(--sage-deep); }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            section { padding: 5rem 6%; }
-
-            .services-grid,
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero { grid-template-columns: 1fr; min-height: auto; }
-
-            .hero-content {
-                padding: 10rem 6% 3rem;
-                text-align: center;
-            }
-
-            .hero p { margin-left: auto; margin-right: auto; }
-            .hero-buttons { justify-content: center; }
-
-            .hero-visual {
-                padding: 2rem 6% 5rem;
-                justify-content: center;
-            }
-
-            .hero-image-wrapper { max-width: 350px; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-
-            .services-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-strip {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 3rem 6%;
-            }
-
-            .contact-grid,
-            .location-content {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row { grid-template-columns: 1fr; }
-
-            .hero-content { padding: 8rem 6% 2rem; }
-
-            footer {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
-            }
-
-            .footer-links { flex-wrap: wrap; justify-content: center; }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 2.2rem; }
-            .section-title { font-size: 1.8rem; }
-            section { padding: 4rem 5%; }
-        }
-    </style>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -834,64 +44,61 @@
     <!-- HERO -->
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <p class="hero-tag">Psicóloga Clínica · M.N. 48.230</p>
-            <h1>Tu bienestar<br>comienza con una<br><em>conversación</em></h1>
-            <p>Te acompaño en un espacio seguro y confidencial para explorar tus emociones, superar desafíos y construir la vida que deseas.</p>
+            <span class="hero-tag">Psicóloga Clínica · M.N. 48.230</span>
+            <h1>Tu bienestar empieza con una <span class="highlight">conversación</span></h1>
+            <p class="hero-subtitle">Te acompaño en un espacio seguro y confidencial para explorar tus emociones, superar desafíos y construir la vida que realmente deseas vivir.</p>
             <div class="hero-buttons">
-                <a href="#contacto" class="btn-primary">Agendar Consulta</a>
-                <a href="#servicios" class="btn-outline">Conocer Más</a>
+                <a href="#contacto" class="btn-primary">
+                    <span>Agendar Consulta</span>
+                </a>
+                <a href="#servicios" class="btn-outline">
+                    <span>Conocer Más</span>
+                </a>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="hero-accent"></div>
-            <div class="hero-image-wrapper">
-                <div class="hero-image-inner">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.8">
-                        <path d="M12 21C12 21 4 14.5 4 9C4 5.13 7.13 2 11 2C12.3 2 13.5 2.4 14.5 3.1C15 2.4 15.7 1.9 16.5 1.5C17.3 1.2 18.1 1 19 1C21.2 1 23 2.8 23 5C23 6.1 22.5 7.1 21.8 7.8"/>
-                        <path d="M12 21C12 21 20 14.5 20 9C20 8.3 19.9 7.6 19.7 7"/>
-                        <circle cx="9" cy="10" r="1"/>
-                        <circle cx="15" cy="10" r="1"/>
-                        <path d="M9.5 15C10.2 15.7 11.1 16 12 16C12.9 16 13.8 15.7 14.5 15"/>
-                    </svg>
-                    <span style="opacity: 0.4; font-size: 0.85rem; letter-spacing: 0.1em;">Tu espacio seguro</span>
-                </div>
-            </div>
+        <div class="hero-floating-card">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Tasa de Satisfacción</div>
         </div>
     </section>
 
     <!-- STATS -->
-    <div class="about-strip">
-        <div class="about-stat reveal">
-            <div class="number">12+</div>
-            <div class="label">Años de Experiencia</div>
-        </div>
-        <div class="about-stat reveal">
-            <div class="number">1500+</div>
-            <div class="label">Pacientes Atendidos</div>
-        </div>
-        <div class="about-stat reveal">
-            <div class="number">98%</div>
-            <div class="label">Satisfacción</div>
+    <div class="stats-strip">
+        <div class="stats-container">
+            <div class="stat-item reveal">
+                <div class="stat-number">12+</div>
+                <div class="stat-label">AÑOS DE EXPERIENCIA</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number">1500+</div>
+                <div class="stat-label">PACIENTES ATENDIDOS</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">SATISFACCIÓN</div>
+            </div>
         </div>
     </div>
 
     <!-- SERVICIOS -->
     <section id="servicios">
-        <div class="section-tag reveal">Lo que ofrezco</div>
-        <h2 class="section-title reveal">Áreas de <em>especialización</em></h2>
-        <div class="divider-line reveal"></div>
-        <p class="section-subtitle reveal">Cada persona es única. Adapto mi enfoque terapéutico para encontrar el camino que mejor se ajuste a tus necesidades.</p>
+        <div class="section-header reveal">
+            <span class="section-tag">Lo que ofrezco</span>
+            <h2 class="section-title">Áreas de especialización</h2>
+            <p class="section-subtitle">Cada persona es única. Adapto mi enfoque terapéutico para encontrar el camino que mejor se ajuste a tus necesidades y objetivos personales.</p>
+        </div>
 
         <div class="services-grid">
             <div class="service-card reveal">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
                 <h3>Terapia Individual</h3>
                 <p>Un espacio íntimo para trabajar en autoconocimiento, manejo emocional y crecimiento personal con enfoque cognitivo-conductual.</p>
             </div>
+
             <div class="service-card reveal">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                     <circle cx="9" cy="7" r="4"/>
                     <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -900,8 +107,9 @@
                 <h3>Terapia de Pareja</h3>
                 <p>Mejora la comunicación, resuelve conflictos y fortalece el vínculo con tu pareja en un ambiente seguro y neutral.</p>
             </div>
+
             <div class="service-card reveal">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <circle cx="12" cy="12" r="10"/>
                     <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
                     <line x1="9" y1="9" x2="9.01" y2="9"/>
@@ -910,16 +118,18 @@
                 <h3>Ansiedad y Estrés</h3>
                 <p>Técnicas efectivas y comprobadas para gestionar la ansiedad, ataques de pánico y el estrés crónico del día a día.</p>
             </div>
+
             <div class="service-card reveal">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
                     <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                 </svg>
                 <h3>Duelo y Pérdidas</h3>
                 <p>Acompañamiento compasivo en procesos de duelo, ayudándote a transitar el dolor y encontrar nuevos significados.</p>
             </div>
+
             <div class="service-card reveal">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <rect x="2" y="3" width="20" height="14" rx="2"/>
                     <line x1="8" y1="21" x2="16" y2="21"/>
                     <line x1="12" y1="17" x2="12" y2="21"/>
@@ -927,24 +137,26 @@
                 <h3>Terapia Online</h3>
                 <p>Sesiones virtuales con la misma calidad y calidez, para que puedas cuidar tu salud mental desde donde estés.</p>
             </div>
+
             <div class="service-card reveal">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                     <path d="M2 17l10 5 10-5"/>
                     <path d="M2 12l10 5 10-5"/>
                 </svg>
                 <h3>Autoestima</h3>
-                <p>Trabaja en tu relación contigo misma/o, fortalece tu confianza y construye una imagen personal más saludable.</p>
+                <p>Trabaja en tu relación contigo mismo/a, fortalece tu confianza y construye una imagen personal más saludable.</p>
             </div>
         </div>
     </section>
 
     <!-- TESTIMONIOS -->
     <section id="testimonios">
-        <div class="section-tag reveal">Testimonios</div>
-        <h2 class="section-title reveal">Lo que dicen mis <em>pacientes</em></h2>
-        <div class="divider-line reveal"></div>
-        <p class="section-subtitle reveal">La confianza de quienes han recorrido este camino es mi mayor motivación.</p>
+        <div class="section-header reveal">
+            <span class="section-tag">Testimonios</span>
+            <h2 class="section-title">Lo que dicen mis pacientes</h2>
+            <p class="section-subtitle">La confianza de quienes han recorrido este camino es mi mayor motivación y compromiso.</p>
+        </div>
 
         <div class="testimonials-grid">
             <div class="testimonial-card reveal">
@@ -958,6 +170,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="testimonial-card reveal">
                 <div class="stars">★ ★ ★ ★ ★</div>
                 <p class="testimonial-text">Nunca pensé que la terapia pudiera transformar tanto mi forma de ver la vida. Cada sesión es un paso más hacia la tranquilidad que buscaba.</p>
@@ -969,6 +182,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="testimonial-card reveal">
                 <div class="stars">★ ★ ★ ★ ★</div>
                 <p class="testimonial-text">Como pareja, estábamos al borde de la separación. Gracias a Valentina aprendimos a comunicarnos de nuevo y hoy estamos más unidos que nunca.</p>
@@ -985,52 +199,79 @@
 
     <!-- CONTACTO -->
     <section id="contacto">
+        <div class="section-header reveal">
+            <span class="section-tag">Contacto</span>
+            <h2 class="section-title">Comencemos juntos</h2>
+            <p class="section-subtitle">El primer paso es siempre el más importante. Escribime y coordinamos una primera entrevista sin compromiso.</p>
+        </div>
+
         <div class="contact-grid">
             <div class="contact-info">
-                <div class="section-tag reveal">Contacto</div>
-                <h2 class="section-title reveal">Comencemos <em>juntos</em></h2>
-                <div class="divider-line reveal"></div>
-                <p class="reveal">El primer paso es siempre el más importante. Escribime y coordinamos una primera entrevista sin compromiso.</p>
-
                 <div class="contact-detail reveal">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
                     <span>+54 11 5555-1234</span>
                 </div>
+
                 <div class="contact-detail reveal">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a6c7b767f746e73747b34687f637f695a797574696f766e7568737534797577">[email&#160;protected]</a></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <span><a href="mailto:valereyes@psi.com">valereyes@psi.com</a></span>
                 </div>
+
                 <div class="contact-detail reveal">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
                     <span>Lunes a Viernes · 9:00 a 20:00</span>
                 </div>
             </div>
 
-            <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('¡Mensaje enviado! Te contactaremos pronto.');">
+            <form class="contact-form reveal" id="contactForm">
+
                 <div class="form-row">
-                    <input type="text" placeholder="Nombre" required>
-                    <input type="text" placeholder="Apellido">
+                    <input type="text" name="nombre" placeholder="Nombre" required>
+                    <input type="text" name="apellido" placeholder="Apellido">
                 </div>
-                <input type="email" placeholder="Email" required>
-                <input type="tel" placeholder="Teléfono">
-                <textarea placeholder="Contame brevemente el motivo de tu consulta..." required></textarea>
-                <button type="submit" class="btn-primary" style="border: none; width: fit-content;">Enviar Mensaje</button>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="telefono" placeholder="Teléfono">
+                </div>
+                <div class="form-group">
+                    <textarea name="mensaje" placeholder="Contame brevemente el motivo de tu consulta..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <span id="submitButtonText">Enviar Mensaje</span>
+                </button>
+
+                <!-- Mensaje de respuesta -->
+                <div id="formMessage" class="form-message" style="display: none;"></div>
             </form>
         </div>
     </section>
 
     <!-- UBICACIÓN -->
     <section id="ubicacion">
-        <div class="section-tag reveal">Ubicación</div>
-        <h2 class="section-title reveal">Dónde <em>encontrarme</em></h2>
-        <div class="divider-line reveal"></div>
+        <div class="section-header reveal">
+            <span class="section-tag">Ubicación</span>
+            <h2 class="section-title">Dónde encontrarme</h2>
+        </div>
 
         <div class="location-content">
             <div class="map-placeholder reveal">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>Mapa interactivo</span>
-                <span style="font-size: 0.78rem; margin-top: 0.3rem; opacity: 0.6;">Av. Santa Fe 2450, Piso 8° B · CABA</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>Av. Santa Fe 2450, Piso 8° B · CABA</span>
             </div>
+
             <div class="location-details reveal">
                 <h3>Consultorio</h3>
                 <p>Av. Santa Fe 2450, Piso 8° Oficina B<br>Barrio Norte, Ciudad Autónoma de Buenos Aires</p>
@@ -1056,53 +297,19 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-logo">Valentina Reyes</div>
-        <div class="footer-links">
-            <a href="#inicio">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#testimonios">Testimonios</a>
-            <a href="#contacto">Contacto</a>
+        <div class="footer-content">
+            <div class="footer-logo">Valentina Reyes</div>
+            <div class="footer-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#testimonios">Testimonios</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div>© 2026 Todos los derechos reservados</div>
         </div>
-        <div>© 2026 Todos los derechos reservados</div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // Hamburger menu
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('open');
-            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-        });
-
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Scroll reveal
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        reveals.forEach(el => observer.observe(el));
-    </script>
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 </html>

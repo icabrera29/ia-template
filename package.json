@@ -1,0 +1,24 @@
+{
+  "name": "psicologia-landing",
+  "version": "1.0.0",
+  "description": "Landing page profesional para servicios de psicología clínica",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "psychology",
+    "landing-page",
+    "vercel"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "resend": "^4.0.1"
+  },
+  "devDependencies": {
+    "vercel": "^37.0.0"
+  }
+}
